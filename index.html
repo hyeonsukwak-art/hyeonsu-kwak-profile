@@ -83,6 +83,11 @@
   .counter-box {
     margin-top: 24px;
     font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
   }
   .odometer {
     display: inline-flex;
@@ -93,6 +98,29 @@
     font-size: 1.4em;
     color: #ffcc00;
     font-family: 'Courier New', monospace;
+  }
+  .like-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #111;
+    border: 2px outset #666;
+    color: #00ffff;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1em;
+    padding: 6px 14px;
+    cursor: pointer;
+  }
+  .like-btn:active {
+    border-style: inset;
+  }
+  .like-btn.liked {
+    color: #000;
+    background: #ff66cc;
+    border-color: #ff99dd;
+  }
+  .like-btn .heart {
+    font-size: 1.2em;
   }
   footer {
     margin-top: 24px;
@@ -134,8 +162,14 @@
     </div>
 
     <div class="counter-box">
-      방문자 수:
-      <span class="odometer" id="odometer">000001</span>
+      <div>
+        방문자 수:
+        <span class="odometer" id="odometer">000001</span>
+      </div>
+      <button class="like-btn" id="likeBtn">
+        <span class="heart">🤍</span>
+        <span id="likeCount">0</span>
+      </button>
     </div>
 
     <footer>
@@ -150,6 +184,33 @@
     localStorage.setItem(key, count);
     var padded = String(count).padStart(6, '0');
     document.getElementById('odometer').textContent = padded;
+  })();
+
+  (function () {
+    var countKey = 'likeCount';
+    var likedKey = 'liked';
+    var btn = document.getElementById('likeBtn');
+    var countEl = document.getElementById('likeCount');
+    var heartEl = btn.querySelector('.heart');
+
+    var count = parseInt(localStorage.getItem(countKey) || '0', 10);
+    var liked = localStorage.getItem(likedKey) === 'true';
+
+    function render() {
+      countEl.textContent = count;
+      heartEl.textContent = liked ? '❤️' : '🤍';
+      btn.classList.toggle('liked', liked);
+    }
+    render();
+
+    btn.addEventListener('click', function () {
+      liked = !liked;
+      count += liked ? 1 : -1;
+      if (count < 0) count = 0;
+      localStorage.setItem(countKey, count);
+      localStorage.setItem(likedKey, liked);
+      render();
+    });
   })();
 </script>
 </body>
