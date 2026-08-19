@@ -3,104 +3,154 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>곽현수 | 자기소개</title>
+<title>★ Hyeonsu's Home Page ★</title>
 <style>
   * { box-sizing: border-box; }
   body {
     margin: 0;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #f4f6f8;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic", sans-serif;
-    color: #222;
-    padding: 24px;
-  }
-  .card {
-    background: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-    padding: 48px 40px;
-    max-width: 420px;
-    width: 100%;
+    background: #000010 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><rect width="200" height="200" fill="%23000010"/><circle cx="10" cy="20" r="1.2" fill="white"/><circle cx="60" cy="80" r="1" fill="white"/><circle cx="120" cy="30" r="1.5" fill="white"/><circle cx="150" cy="140" r="1" fill="white"/><circle cx="40" cy="160" r="1.3" fill="white"/><circle cx="180" cy="90" r="1" fill="white"/><circle cx="90" cy="180" r="1.1" fill="white"/><circle cx="20" cy="120" r="1" fill="white"/></svg>') repeat;
+    color: #00ff99;
+    font-family: 'Courier New', Courier, monospace;
     text-align: center;
+    padding: 20px;
   }
-  .avatar {
-    width: 96px;
-    height: 96px;
-    border-radius: 50%;
-    background: #2563eb;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.2em;
-    font-weight: 700;
-    margin: 0 auto 20px;
+  .container {
+    max-width: 700px;
+    margin: 0 auto;
+    border: 4px double #ff00ff;
+    background: rgba(0,0,20,0.75);
+    padding: 24px;
+    box-shadow: 0 0 25px #ff00ff88;
   }
   h1 {
-    font-size: 1.6em;
-    margin: 0 0 4px;
+    color: #ffff00;
+    text-shadow: 2px 2px 0 #ff00ff, -1px -1px 0 #00ffff;
+    font-size: 2.2em;
+    letter-spacing: 2px;
+    animation: blink 1.4s step-start infinite;
   }
-  .dept {
+  @keyframes blink {
+    50% { opacity: 0.55; }
+  }
+  .marquee {
+    overflow: hidden;
+    white-space: nowrap;
+    border-top: 2px dashed #00ffff;
+    border-bottom: 2px dashed #00ffff;
+    padding: 6px 0;
+    margin: 16px 0;
+  }
+  .marquee span {
     display: inline-block;
-    background: #e8f0fe;
-    color: #2563eb;
-    font-size: 0.85em;
-    font-weight: 600;
-    padding: 4px 12px;
-    border-radius: 999px;
-    margin-bottom: 20px;
+    padding-left: 100%;
+    animation: scroll-left 12s linear infinite;
+    color: #ff66cc;
+    font-weight: bold;
   }
-  .tagline {
-    color: #555;
-    font-size: 0.98em;
-    margin-bottom: 28px;
-    line-height: 1.5;
+  @keyframes scroll-left {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
   }
-  .section-title {
-    font-size: 0.8em;
-    color: #999;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 12px;
+  .badge {
+    display: inline-block;
+    background: linear-gradient(#ffffff, #cccccc);
+    color: #000;
+    border: 1px solid #999;
+    padding: 3px 10px;
+    margin: 4px;
+    font-size: 0.75em;
+    border-radius: 3px;
   }
-  .likes {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-bottom: 8px;
+  ul.links {
+    list-style: none;
+    padding: 0;
   }
-  .likes span {
-    background: #f1f3f5;
-    padding: 8px 16px;
-    border-radius: 10px;
-    font-size: 0.92em;
+  ul.links li {
+    margin: 8px 0;
+  }
+  ul.links a {
+    color: #00ffff;
+    text-decoration: none;
+    border: 1px solid #00ffff;
+    padding: 6px 14px;
+    display: inline-block;
+    transition: 0.2s;
+  }
+  ul.links a:hover {
+    background: #00ffff;
+    color: #000;
+  }
+  .counter-box {
+    margin-top: 24px;
+    font-size: 0.9em;
+  }
+  .odometer {
+    display: inline-flex;
+    background: #111;
+    border: 2px inset #666;
+    padding: 4px 8px;
+    letter-spacing: 4px;
+    font-size: 1.4em;
+    color: #ffcc00;
+    font-family: 'Courier New', monospace;
   }
   footer {
-    margin-top: 32px;
+    margin-top: 24px;
     font-size: 0.75em;
-    color: #bbb;
+    color: #7777aa;
+  }
+  hr {
+    border: none;
+    border-top: 1px dotted #ff00ff;
   }
 </style>
 </head>
 <body>
-  <div class="card">
-    <div class="avatar">곽</div>
-    <h1>곽현수</h1>
-    <div class="dept">SCM</div>
-    <p class="tagline">"오늘도 효율적으로, 내일은 더 효율적으로"</p>
+  <div class="container">
+    <h1>★ WELCOME TO MY HOME PAGE ★</h1>
+    <p>안녕하세요! 여긴 <b>현수</b>의 아주 개인적인 홈페이지입니다.</p>
 
-    <div class="section-title">좋아하는 것</div>
-    <div class="likes">
-      <span>☕ 커피</span>
-      <span>🎮 게임</span>
-      <span>😴 잠</span>
+    <div class="marquee"><span>✨ Sweet Balance에서 일하는 현수의 인터넷 방 ✨ &nbsp;&nbsp;&nbsp; 오늘도 좋은 하루 되세요! &nbsp;&nbsp;&nbsp; New! GitHub로 직접 만든 첫 홈페이지 입니다 &nbsp;&nbsp;&nbsp; </span></div>
+
+    <p>
+      <span class="badge">Best View 1024x768</span>
+      <span class="badge">Made with ♥ + Claude</span>
+      <span class="badge">Since 2026</span>
+    </p>
+
+    <hr>
+
+    <h2>🌐 Link 모음</h2>
+    <ul class="links">
+      <li><a href="https://github.com" target="_blank">🔗 GitHub</a></li>
+      <li><a href="#guestbook">📖 방명록 (준비중)</a></li>
+      <li><a href="#profile">🙋 자기소개</a></li>
+    </ul>
+
+    <div id="profile">
+      <h2>👤 자기소개</h2>
+      <p>이름: 현수 &nbsp;|&nbsp; 좋아하는 것: 커피, 게임, 잠</p>
+      <p>한 줄 소개: "GitHub로 나만의 홈페이지, 오늘 처음 완주했습니다!"</p>
     </div>
 
-    <footer>© 2026 Hyeonsu Kwak</footer>
+    <div class="counter-box">
+      방문자 수:
+      <span class="odometer" id="odometer">000001</span>
+    </div>
+
+    <footer>
+      &copy; 2026 Hyeonsu's Home Page. Best viewed with a nostalgic heart. 🖤
+    </footer>
   </div>
+
+<script>
+  (function () {
+    var key = 'visitCount';
+    var count = parseInt(localStorage.getItem(key) || '0', 10) + 1;
+    localStorage.setItem(key, count);
+    var padded = String(count).padStart(6, '0');
+    document.getElementById('odometer').textContent = padded;
+  })();
+</script>
 </body>
 </html>
