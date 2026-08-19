@@ -119,8 +119,17 @@
     background: #ff66cc;
     border-color: #ff99dd;
   }
-  .like-btn .heart {
+  .like-btn .thumb {
     font-size: 1.2em;
+    display: inline-block;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: transform 0.15s ease;
+  }
+  .like-btn.liked .thumb {
+    filter: none;
+    opacity: 1;
+    transform: rotate(-10deg) scale(1.15);
   }
   footer {
     margin-top: 24px;
@@ -167,7 +176,7 @@
         <span class="odometer" id="odometer">000001</span>
       </div>
       <button class="like-btn" id="likeBtn">
-        <span class="heart">🤍</span>
+        <span class="thumb">👍</span>
         <span id="likeCount">0</span>
       </button>
     </div>
@@ -191,14 +200,12 @@
     var likedKey = 'liked';
     var btn = document.getElementById('likeBtn');
     var countEl = document.getElementById('likeCount');
-    var heartEl = btn.querySelector('.heart');
 
     var count = parseInt(localStorage.getItem(countKey) || '0', 10);
     var liked = localStorage.getItem(likedKey) === 'true';
 
     function render() {
       countEl.textContent = count;
-      heartEl.textContent = liked ? '❤️' : '🤍';
       btn.classList.toggle('liked', liked);
     }
     render();
